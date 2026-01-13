@@ -1,0 +1,31 @@
+# add eureka configuration
+eureka:
+  instance:
+    hostname: school-service # eureka instance which we have created has name localhost
+  client: # I want to register with Eureka server, where it is?
+    service-url:
+      defaultZone: http://discovery-service:8761/eureka  # it is in this location
+# So, when the school-service (the person) starts up, the eureka.client configuration tells it:
+# "Go to this library (discovery-service) and ask for directions to all the other services."
+# The school-service acts as a Eureka client to go to the discovery-service (the Eureka server) and ask,
+#  "Where can I find the student-service?"
+server:
+  port: 8070
+
+
+application:
+  config:
+    gateway-url: http://gateway-service:8222/api/v1/students
+
+spring:
+  application:
+    name: schools
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://mysql-db:3306/school_microservice?characterEncoding=UTF-8
+    username: root
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: create
+
