@@ -1,6 +1,9 @@
 eureka:
   client:
-    register-with-eureka: false # not register with eureka
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://discovery-service:8761/eureka
 
 server:
   port: 8222
@@ -19,5 +22,7 @@ spring:
           uri: http://school-service:8070
           predicates:
             - Path=/api/v1/school/**
-
+    locator:
+      enabled: true
+      lower-case-service-id: true
 
