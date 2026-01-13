@@ -1,6 +1,6 @@
 eureka:
   instance:
-    hostname: discovery-service  # instead of localhost
+    hostname: discovery  # instead of localhost
   client:
     register-with-eureka: false
     fetch-registry: false
