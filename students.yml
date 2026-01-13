@@ -3,6 +3,7 @@ eureka:
   instance:
     hostname: students #because we have given localhost to Discovery project
     prefer-ip-address: false
+    instance-id: students:${server.port}
   client: #A Eureka client (your microservice student) needs to register itself with the Eureka Server to be discoverable by other services.
     service-url:
       defaultZone: http://discovery:8761/eureka
