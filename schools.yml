@@ -2,6 +2,7 @@
 eureka:
   instance:
     hostname: schools # eureka instance which we have created has name localhost
+    prefer-ip-address: false
   client: # I want to register with Eureka server, where it is?
     service-url:
       defaultZone: http://discovery:8761/eureka  # it is in this location
