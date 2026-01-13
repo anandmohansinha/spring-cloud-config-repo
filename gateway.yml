@@ -1,6 +1,5 @@
 eureka:
   client:
-    register-with-eureka: false
     fetch-registry: false
     service-url:
       defaultZone: http://discovery-service:8761/eureka
@@ -15,7 +14,7 @@ spring:
     gateway:
       routes:
         - id: students
-          uri: http://student-service:8090
+          uri: lb://student-service
           predicates:
             - Path=/api/v1/students/**
         - id: schools
@@ -25,4 +24,6 @@ spring:
     locator:
       enabled: true
       lower-case-service-id: true
-
+    discovery:
+      locator:
+        enable: true
