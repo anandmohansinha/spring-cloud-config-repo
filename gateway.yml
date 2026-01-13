@@ -14,11 +14,11 @@ spring:
     gateway:
       routes:
         - id: students
-          uri: lb://students
+          uri: lb://STUDENTS
           predicates:
             - Path=/api/v1/students/**
         - id: schools
-          uri: lb://schools
+          uri: lb://SCHOOLS
           predicates:
             - Path=/api/v1/school/**
     locator:
