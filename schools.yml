@@ -1,10 +1,10 @@
 # add eureka configuration
 eureka:
   instance:
-    hostname: school-service # eureka instance which we have created has name localhost
+    hostname: schools # eureka instance which we have created has name localhost
   client: # I want to register with Eureka server, where it is?
     service-url:
-      defaultZone: http://discovery-service:8761/eureka  # it is in this location
+      defaultZone: http://discovery:8761/eureka  # it is in this location
 # So, when the school-service (the person) starts up, the eureka.client configuration tells it:
 # "Go to this library (discovery-service) and ask for directions to all the other services."
 # The school-service acts as a Eureka client to go to the discovery-service (the Eureka server) and ask,
@@ -15,7 +15,7 @@ server:
 
 application:
   config:
-    gateway-url: http://gateway-service:8222/api/v1/students
+    gateway-url: http://gateway:8222/api/v1/students
 
 spring:
   application:
