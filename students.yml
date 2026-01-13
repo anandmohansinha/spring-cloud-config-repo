@@ -1,16 +1,16 @@
 # add eureka configuration
 eureka:
   instance:
-    hostname: student-service #because we have given localhost to Discovery project
+    hostname: student #because we have given localhost to Discovery project
   client: #A Eureka client (your microservice student) needs to register itself with the Eureka Server to be discoverable by other services.
     service-url:
-      defaultZone: http://discovery-service:8761/eureka
+      defaultZone: http://discovery:8761/eureka
 
 server:
   port: 8090
 spring:
   application:
-    name: student-service
+    name: students
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://mysql-db:3306/student_microservice?characterEncoding=UTF-8
