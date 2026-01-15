@@ -3,6 +3,7 @@ eureka:
   instance:
     hostname: schools # eureka instance which we have created has name localhost
     prefer-ip-address: false
+    instance-id: schools:${server.port}
   client: # I want to register with Eureka server, where it is?
     service-url:
       defaultZone: http://discovery:8761/eureka  # it is in this location
@@ -17,7 +18,10 @@ server:
 application:
   config:
     gateway-url: http://gateway:8222/api/v1/students
-
+management:
+  tracing:
+    sampling:
+      probability: 1.0
 spring:
   application:
     name: schools
