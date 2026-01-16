@@ -1,23 +1,9 @@
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://discovery:8761/eureka
-
 server:
   port: 8222
 
 spring:
   application:
     name: gateway
-management:
-  tracing:
-    sampling:
-      probability: 1.0
-  zipkin:
-    tracing:
-      endpoint: http://zipkin:9411/api/v2/spans
 
   cloud:
     gateway:
@@ -30,9 +16,31 @@ management:
           uri: lb://SCHOOLS
           predicates:
             - Path=/api/v1/school/**
-    locator:
-      enabled: true
-      lower-case-service-id: true
-    discovery:
-      locator:
-        enabled: true
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+eureka:
+  instance:
+    hostname: gateway
+    prefer-ip-address: false
+    instance-id: gateway:${server.port}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://discovery:8761/eureka
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
+
+# spring.cloud.gateway must be under spring, not under management.
