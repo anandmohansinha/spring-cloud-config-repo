@@ -16,12 +16,10 @@ spring:
           uri: lb://SCHOOLS
           predicates:
             - Path=/api/v1/school/**
-    locator:
-      enabled: true
-      lower-case-service-id: true
     discovery:
       locator:
         enabled: true
+        lower-case-service-id: true
 eureka:
   instance:
     hostname: gateway
