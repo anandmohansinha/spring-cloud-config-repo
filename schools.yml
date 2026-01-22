@@ -20,6 +20,7 @@ application:
     gateway-url: http://gateway:8222/api/v1/students
 management:
   tracing:
+    enabled: true
     sampling:
       probability: 1.0
   zipkin:
