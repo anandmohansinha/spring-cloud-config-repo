@@ -14,12 +14,27 @@ spring:
             - Path=/api/v1/students/**
         - id: schools
           uri: lb://SCHOOLS
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+                  # This must match the method name of your @Bean in Java
+                key-resolver: "#{@ipKeyResolver}"
           predicates:
             - Path=/api/v1/school/**
       discovery:
         locator:
           enabled: true
           lower-case-service-id: true
+    openfeign:
+      micrometer:
+        enabled: true
+  data:
+    redis:
+      host: redis
+      port: 6397
+
 eureka:
   instance:
     hostname: gateway
