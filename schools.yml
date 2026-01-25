@@ -38,4 +38,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-
+  cloud:
+    openfeign:
+      micrometer:
+        enabled: true
